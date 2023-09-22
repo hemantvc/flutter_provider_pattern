@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_pattern/provider/example_one_provider.dart';
-import 'package:provider_pattern/screen/ExampleOneProvider.dart';
+import 'package:provider_pattern/provider/favorate_provider.dart';
+import 'package:provider_pattern/screen/example_one_provider.dart';
+import 'package:provider_pattern/screen/favorite_screen.dart';
 
 import 'model/couter_model.dart';
 
@@ -9,10 +11,13 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => CounterModel()),
-      ChangeNotifierProvider(create: (_) => ExampleOneProvider())
+      ChangeNotifierProvider(create: (_) => ExampleOneProvider()),
+      ChangeNotifierProvider(
+        create: (_) => FavouriteItemProvider(),
+      )
     ],
     child: MaterialApp(
-      home: ExampleOne(),
+      home: FavouriteScreen(),
     ),
   ));
 }
